@@ -1,0 +1,22 @@
+{
+  "name": "server-vite",
+  "private": true,
+  "version": "0.0.0",
+  "type": "commonjs",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "watch-json": "json-server --watch db.json",
+    "server": "node --no-warnings=ExperimentalWarning --loader ts-node/esm server.ts && json-server --watch db.json"
+  },
+  "devDependencies": {
+    "@types/node": "^20.6.0",
+    "ts-node": "^10.9.1",
+    "typescript": "5.0.2",
+    "vite": "4.4.5"
+  },
+  "dependencies": {
+    "json-server": "0.17.3"
+  }
+}
