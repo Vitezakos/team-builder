@@ -8,7 +8,7 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "watch-json": "json-server --watch db.json",
-    "server": "node --no-warnings=ExperimentalWarning --loader ts-node/esm server.ts && json-server --watch db.json"
+    "server": "node --no-warnings=ExperimentalWarning --loader ts-node/esm server.ts "
   },
   "devDependencies": {
     "@types/node": "^20.6.0",
@@ -17,6 +17,7 @@
     "vite": "4.4.5"
   },
   "dependencies": {
+    "@types/json-server": "^0.14.4",
     "json-server": "0.17.3"
   }
 }

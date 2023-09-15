@@ -1,7 +1,14 @@
 {
-  "team-builder": {
-    "champA": {},
-    "champB": {},
-    "champC": {}
-  }
+  "champs": [
+    {
+      "id": 1,
+      "champId": 1,
+      "name": "champA"
+    },
+    {
+      "id": 2,
+      "champId": 2,
+      "name": "champB"
+    }
+  ]
 }
