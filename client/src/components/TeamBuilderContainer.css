@@ -1,4 +1,34 @@
 div {
-  background-color: #0e1015;
   height: 100%;
+  background-color: #0e1015;
+  color: white;
+}
+
+.teamBuilderContainer {
+  height: fit-content;
+  font-family: "Mulish", sans-serif;
+  font-size: 26px;
+}
+
+.teamIcons {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+.top {
+  display: flex;
+  align-items: center;
+}
+
+.laneIcons {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.laneIcons img {
+  height: 72px;
+  width: 72px;
 }
