@@ -4,6 +4,7 @@
 import "./App.css";
 import { Header } from "./components/Header";
 import { TeamBuilderContainer } from "./components/TeamBuilderContainer";
+import "semantic-ui-css/semantic.min.css";
 
 function App() {
   //const [count, setCount] = useState(0);
@@ -14,6 +15,7 @@ function App() {
         <Header></Header>
         <TeamBuilderContainer></TeamBuilderContainer>
       </div>
+
       {/* <div>
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
