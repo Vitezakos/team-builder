@@ -17,3 +17,52 @@
   font-family: "Mulish", sans-serif;
   font-size: 26px;
 }
+
+.searchContainer {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  justify-content: center;
+}
+
+.background {
+  display: flex;
+  top: 5rem;
+  position: relative;
+  justify-content: space-evenly;
+  background-color: #13151b;
+  border: solid 1px #17191e;
+  align-items: center;
+}
+
+.headerContainer .searchContainer .background {
+  height: 10rem;
+  width: 40rem;
+}
+
+.headerContainer .searchContainer .serverBtn {
+  background-color: #1891ab;
+  color: #fff;
+  border-radius: 8px;
+  height: 4rem;
+  width: 6rem;
+  align-items: center;
+}
+.headerContainer .searchContainer .searchBar {
+  background-color: #1891ab;
+  color: #fff;
+  height: 4rem;
+  width: 25rem;
+  border-radius: 8px;
+}
+.headerContainer .searchContainer .searchBar::placeholder {
+  font-family: "Mulish", sans-serif;
+  font-size: 26px;
+  color: #fff;
+}
+.hidden {
+  display: none;
+}
