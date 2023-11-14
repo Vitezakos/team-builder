@@ -12,6 +12,7 @@ import Support from "../icons/Position_Plat-Support.png";
 import Fav from "../icons/favourites.png";
 
 function TeamBuilderContainer() {
+  console.log("teambuilder was rendered");
   return (
     <div className="teamBuilderContainer">
       <div className="teamcompWrapper">
