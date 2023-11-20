@@ -3,7 +3,7 @@ import "./Header.css";
 import { useOnClickOutside } from "usehooks-ts";
 import { Outlet, useNavigate } from "react-router-dom";
 
-function Header() {
+function Header({ setprofileName }: any) {
   function openSearch() {
     setOpen((previousState) => !previousState);
   }
@@ -15,19 +15,27 @@ function Header() {
   const inputRef = useRef(null);
   const errorRef = useRef(null);
   const handleKey = (event: any) => {
-    if ((event.target as HTMLInputElement)?.value) {
+    if ((event.target as HTMLInputElement)?.value && event.key === "Enter") {
       navigate("/player");
       openSearch();
-    } else {
-      console.log(
-        (errorRef.current! as HTMLDivElement).classList.toggle("hidden")
-      );
+      setprofileName(event.target.value);
+    } else if (
+      !(event.target as HTMLInputElement)?.value &&
+      event.key === "Enter"
+    ) {
+      (errorRef.current! as HTMLDivElement).classList.toggle("hidden");
     }
   };
   return (
     <div className="headerContainer">
       <button onClick={openSearch}>Search for player</button>
-      <button>Team builder</button>
+      <button
+        onClick={() => {
+          navigate("/");
+        }}
+      >
+        Team builder
+      </button>
       {open ? (
         <div className="searchContainer">
           <div ref={ref} className="background">
