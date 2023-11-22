@@ -6,55 +6,23 @@ const port = process.env.PORT || 3000;
 const db = require("./db.json");
 
 server.use(middlewares);
-
-console.log("line 10");
-// server.patch("/champs/:id", (response: any, request: any) => {
-//   debugger;
-//   console.log("response ", response);
-//   console.log("request ", request);
-// });
-
-// server.use((req: any, res: any, next: any) => {
-//   debugger;
-//   // if (req.method === "GET") {
-//   //   console.log("response ", req);
-//   //   console.log("request ", res);
-//   // }
-//   console.log("response ", req);
-//   console.log("request ", res);
-//   // Continue to JSON Server router
-//   next();
-// });
-// jsonServer.router("/cats", (response: any, request: any) => {
-//   console.log("response ", response);
-//   console.log("request ", request);
-// });
-
-// To handle POST, PUT and PATCH you need to use a body-parser
-// You can use the one used by JSON Server
 server.use(jsonServer.bodyParser);
-
-server.use((req: any, res: any, next: any) => {
-  // if (req.method === "POST") {
-  //   req.body.createdAt = Date.now();
-  // }
-  debugger;
-  console.log(req, res);
-  // Continue to JSON Server router
-  next();
-});
-
-server.use(middlewares);
-server.use(jsonServer.bodyParser);
-
-server.post("/addtasks", (req: any, res: any) => {
-  const db = router.db; // Assign the lowdb instance
-  console.log(req);
-  res.status(200).json({ message: db });
-});
 
 server.get("/getTest", ({}, res: any) => {
   res.status(200).json({ message: "ok" });
+});
+
+server.post("/addUser", (req: any, res: any) => {
+  const { userName } = req.body;
+  const doesUserExist = userName in db.users;
+
+  if (!doesUserExist) {
+    const userRecord = router.db.get("users");
+    userRecord.set(userName, {}).write();
+    return res.status(200).json({ message: "new user added" });
+  } else {
+    return res.status(409).json({ message: "user already exists" });
+  }
 });
 
 server.use(router);
