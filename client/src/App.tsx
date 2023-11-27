@@ -7,10 +7,8 @@ import { TeamBuilderContainer } from "./components/TeamBuilderContainer";
 import "semantic-ui-css/semantic.min.css";
 import { PlayerData } from "./components/PlayerData";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useProfileState } from "./components/useProfileState";
 
 function App() {
-  const { profileName, setprofileName } = useProfileState();
   return (
     <>
       <div className="app-container">
@@ -21,7 +19,7 @@ function App() {
               path="/"
               element={
                 <div className="wrapper-page">
-                  <Header setprofileName={setprofileName} />
+                  <Header />
                   <TeamBuilderContainer />
                 </div>
               }
@@ -30,8 +28,8 @@ function App() {
               path="player"
               element={
                 <div className="wrapper-page">
-                  <Header setprofileName={setprofileName} />
-                  <PlayerData profileName={profileName} />
+                  <Header />
+                  <PlayerData />
                 </div>
               }
             />

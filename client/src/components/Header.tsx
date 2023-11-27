@@ -2,15 +2,16 @@ import { useRef, useState } from "react";
 import "./Header.css";
 import { useOnClickOutside } from "usehooks-ts";
 import { Outlet, useNavigate } from "react-router-dom";
+import { useProfileState } from "./useProfileState";
 
-function Header({ setprofileName }: any) {
+function Header() {
+  const { profileName, setprofileName } = useProfileState();
   function openSearch() {
     setOpen((previousState) => !previousState);
   }
   const [open, setOpen] = useState(false);
   const ref = useRef(null);
   useOnClickOutside(ref, () => setOpen((previousState) => !previousState));
-  console.log("header was rendered");
   const navigate = useNavigate();
   const inputRef = useRef(null);
   const errorRef = useRef(null);
@@ -19,6 +20,7 @@ function Header({ setprofileName }: any) {
       navigate("/player");
       openSearch();
       setprofileName(event.target.value);
+      console.log(profileName);
     } else if (
       !(event.target as HTMLInputElement)?.value &&
       event.key === "Enter"
