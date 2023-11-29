@@ -1,8 +1,6 @@
 import "./PlayerData.css";
-//import poroIcon from "../icons/3009.png";
 import Ksante from "../icons/ksante.png";
 import { useProfileState } from "./useProfileState";
-import { useEffect, useState } from "react";
 
 function PlayerData() {
   const {
@@ -15,18 +13,15 @@ function PlayerData() {
     deaths,
     assists,
     win,
-    riotTagLine,
-    profileName,
+    hashtag,
   } = useProfileState();
-  const [profile, setProfile] = useState(leagueName + "#" + riotTagLine);
   let summonerIcon = `https://ddragon.leagueoflegends.com/cdn/10.18.1/img/profileicon/${iconId}.png`;
 
-  //console.log("playerdata was rendered");
   return (
     <div className="player-container">
       <div className="summoner">
         <img src={summonerIcon} alt="" />
-        <h1 className="summoner-name">{profileName}</h1>
+        <h1 className="summoner-name">{leagueName + "#" + hashtag}</h1>
         <h1 className="summoner-level">Lv. {summonerLevel}</h1>
       </div>
       <div className="match">

@@ -1,11 +1,13 @@
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import "./Header.css";
 import { useOnClickOutside } from "usehooks-ts";
 import { Outlet, useNavigate } from "react-router-dom";
 import { useProfileState } from "./useProfileState";
+import { testContext } from "./utilities/useContext";
 
 function Header() {
-  const { profileName, setprofileName } = useProfileState();
+  const { setTest } = useContext(testContext);
+  const { setprofileName, handleNameChange } = useProfileState();
   function openSearch() {
     setOpen((previousState) => !previousState);
   }
@@ -20,7 +22,8 @@ function Header() {
       navigate("/player");
       openSearch();
       setprofileName(event.target.value);
-      console.log(profileName);
+      handleNameChange(event.target.value);
+      setTest(event.target.value);
     } else if (
       !(event.target as HTMLInputElement)?.value &&
       event.key === "Enter"

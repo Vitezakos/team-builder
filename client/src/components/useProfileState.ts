@@ -1,7 +1,9 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
+import { testContext } from "./utilities/useContext";
 
 const useProfileState = () => {
-  const [profileName, setprofileName] = useState("NiGHt oWL#8512");
+  const apiKey = "";
+  const [profileName, setprofileName] = useState("");
   const [leagueName, setLeagueName] = useState("");
   const [puuid, setPuuid] = useState("");
   const [summonerLevel, setSummonerLevel] = useState(0);
@@ -13,6 +15,10 @@ const useProfileState = () => {
   const [deaths, setDeaths] = useState(0); //int
   const [assists, setAssists] = useState(0); //int
   const [win, setWin] = useState(""); //string
+  const [hashtag, setHashtag] = useState("");
+  const [everyGameId, setEveryGameId] = useState([] as string[]);
+  const [everyGame, setEveryGame] = useState([] as any[][]);
+  const { test } = useContext(testContext);
 
   const fetchData = async function data(argument: string) {
     try {
@@ -20,6 +26,7 @@ const useProfileState = () => {
       const data = await response.json();
 
       setPuuid(data.puuid);
+      //return data.gameName;
       setLeagueName(data.gameName);
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -44,6 +51,38 @@ const useProfileState = () => {
       const data = await response.json();
 
       setMatchId(data[0]);
+      setEveryGameId(data);
+    } catch (error) {
+      console.log("Error fetching data:", error);
+    }
+  };
+
+  const fetchAllGames = async function handleAllGames(ar: string) {
+    try {
+      const response = await fetch(ar);
+      const data = await response.json();
+
+      let gameToParse = data;
+      gameToParse = {};
+      gameToParse.gameMode = data.info.gameMode;
+      for (let i = 0; i < data.info.participants.length; i++) {
+        if (data.info.participants[i].puuid == puuid) {
+          gameToParse.championName =
+            data.info.participants[i].championName.toLowerCase();
+          gameToParse.kills = data.info.participants[i].kills;
+          gameToParse.deaths = data.info.participants[i].deaths;
+          gameToParse.assists = data.info.participants[i].assists;
+          if (data.info.participants[i].win) {
+            gameToParse.win = "Victory";
+          } else {
+            gameToParse.win = "Def  eat";
+          }
+        }
+        setEveryGame((value) => {
+          return [...value, gameToParse];
+        });
+        console.log(everyGame);
+      }
     } catch (error) {
       console.log("Error fetching data:", error);
     }
@@ -56,7 +95,7 @@ const useProfileState = () => {
       setGameMode(data.info.gameMode); // HARAM
       for (let i = 0; i < data.info.participants.length; i++) {
         if (data.info.participants[i].puuid == puuid) {
-          setChampionName(data.info.participants[i].championName); //.championId maybe
+          setChampionName(data.info.participants[i].championName.toLowerCase()); //.championId maybe
           setKills(data.info.participants[i].kills);
           setDeaths(data.info.participants[i].deaths);
           setAssists(data.info.participants[i].assists);
@@ -72,21 +111,33 @@ const useProfileState = () => {
     }
   };
 
-  let riotName = profileName.split("#")[0];
-  let riotTagLine = profileName.split("#")[1];
-  const apiKey = "RGAPI-3f2ede33-cdbd-460b-badf-3e6677a7429d";
+  const isInitialMount = useRef(true);
 
-  let riotAccountLink = `/riot-api/riot/account/v1/accounts/by-riot-id/${riotName}/${riotTagLine}?api_key=${apiKey}`;
+  // useEffect(() => {
+  //   if (isInitialMount.current) {
+  //     isInitialMount.current = false;
+  //   }
+  //   let riotName = test.split("#")[0];
+  //   let riotTagLine = test.split("#")[1];
+  //   setHashtag(riotTagLine);
+  //   let riotAccountLink = `/riot-api/riot/account/v1/accounts/by-riot-id/${riotName}/${riotTagLine}?api_key=${apiKey}`;
+  //   fetchData(riotAccountLink);
+  // }, [test]);
+
+  const handleNameChange = (test: string) => {
+    console.log("name changed");
+    let riotName = test.split("#")[0];
+    let riotTagLine = test.split("#")[1];
+    setHashtag(riotTagLine);
+    let riotAccountLink = `/riot-api/riot/account/v1/accounts/by-riot-id/${riotName}/${riotTagLine}?api_key=${apiKey}`;
+    fetchData(riotAccountLink);
+  };
 
   useEffect(() => {
-    let riotAccountLink2 = `/riot-api/riot/account/v1/accounts/by-riot-id/${
-      profileName.split("#")[0]
-    }/${profileName.split("#")[1]}?api_key=${apiKey}`;
-    fetchData(riotAccountLink2);
-    console.log("profilename changed");
-  }, [profileName]);
-
-  useEffect(() => {
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+      return;
+    }
     if (puuid == "") {
       return;
     }
@@ -96,30 +147,44 @@ const useProfileState = () => {
     fetchMatchHistory(matchHistory);
   }, [puuid]);
 
-  useEffect(() => {
-    let singleMatch = `/riot-api/lol/match/v5/matches/${matchId}?api_key=${apiKey}`;
-    fetchSingleGame(singleMatch);
-  }, [matchId]);
+  // useEffect(() => {
+  //   if (isInitialMount.current) {
+  //     isInitialMount.current = false;
+  //   }
+  //   if (matchId == "") {
+  //     return;
+  //   }
+  //   let singleMatch = `/riot-api/lol/match/v5/matches/${matchId}?api_key=${apiKey}`;
+  //   fetchSingleGame(singleMatch);
+  // }, [puuid, matchId]);
+
+  // useEffect(() => {
+  //   if (isInitialMount.current) {
+  //     isInitialMount.current = false;
+  //   }
+  //   console.log("whatishappening:", everyGameId[1]);
+  //   for (let i = 0; i < 3; i++) {
+  //     fetchAllGames(
+  //       `/riot-api/lol/match/v5/matches/${everyGameId[i]}?api_key=${apiKey}`
+  //     );
+  //   }
+  // }, [everyGameId]); // PLURAL MANY GAMES
+
+  console.log("how many");
 
   return {
-    profileName,
-    setprofileName,
-    fetchData,
-    leagueName,
-    puuid,
-    fetchSummonerData,
     summonerLevel,
     iconId,
-    fetchMatchHistory,
-    matchId,
-    fetchSingleGame,
     gameMode,
     championName,
     kills,
     deaths,
     assists,
     win,
-    riotTagLine,
+    hashtag,
+    handleNameChange,
+    setprofileName,
+    leagueName,
   };
 };
 export { useProfileState };
