@@ -2,12 +2,10 @@ import { useContext, useRef, useState } from "react";
 import "./Header.css";
 import { useOnClickOutside } from "usehooks-ts";
 import { Outlet, useNavigate } from "react-router-dom";
-import { useProfileState } from "./useProfileState";
-import { testContext } from "./utilities/useContext";
+import { playerContext } from "./utilities/useContext";
 
 function Header() {
-  const { setTest } = useContext(testContext);
-  const { setprofileName, handleNameChange } = useProfileState();
+  const { setInputName } = useContext(playerContext);
   function openSearch() {
     setOpen((previousState) => !previousState);
   }
@@ -21,9 +19,7 @@ function Header() {
     if ((event.target as HTMLInputElement)?.value && event.key === "Enter") {
       navigate("/player");
       openSearch();
-      setprofileName(event.target.value);
-      handleNameChange(event.target.value);
-      setTest(event.target.value);
+      setInputName(event.target.value);
     } else if (
       !(event.target as HTMLInputElement)?.value &&
       event.key === "Enter"

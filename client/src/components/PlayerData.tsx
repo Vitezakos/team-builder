@@ -1,67 +1,34 @@
 import "./PlayerData.css";
-import Ksante from "../icons/ksante.png";
 import { useProfileState } from "./useProfileState";
+import { MatchHistory } from "./MatchHistory";
 
 function PlayerData() {
-  const {
-    leagueName,
-    summonerLevel,
-    iconId,
-    gameMode,
-    championName,
-    kills,
-    deaths,
-    assists,
-    win,
-    hashtag,
-  } = useProfileState();
-  let summonerIcon = `https://ddragon.leagueoflegends.com/cdn/10.18.1/img/profileicon/${iconId}.png`;
+  const { currentGames, iconIdAndSummonerLevel, currentNameAndTagLine } =
+    useProfileState();
+  let summonerIcon = `https://ddragon.leagueoflegends.com/cdn/10.18.1/img/profileicon/${iconIdAndSummonerLevel.icon}.png`;
+
+  console.log("Playerdata currentgames:", currentGames);
+
+  const handleMatchHistory = () => {
+    const arrayOfMatches = [];
+    for (let i = 0; i < currentGames.length; i++) {
+      arrayOfMatches.push(
+        <MatchHistory key={i} gameDataDefault={currentGames[i]}></MatchHistory>
+      );
+    }
+    return arrayOfMatches;
+  };
 
   return (
     <div className="player-container">
       <div className="summoner">
         <img src={summonerIcon} alt="" />
-        <h1 className="summoner-name">{leagueName + "#" + hashtag}</h1>
-        <h1 className="summoner-level">Lv. {summonerLevel}</h1>
+        <h1 className="summoner-name">
+          {currentNameAndTagLine.name + "#" + currentNameAndTagLine.tagLine}
+        </h1>
+        <h1 className="summoner-level">Lv. {iconIdAndSummonerLevel.level}</h1>
       </div>
-      <div className="match">
-        <img src={`../src/icons/${championName}.png`} />
-        <div className="kda">
-          <div className="real-kda">{`${kills} / ${deaths} / ${assists}`}</div>
-          <div className="avg-kda">
-            {((kills + assists) / deaths).toFixed(2)} KDA
-          </div>
-        </div>
-        <div className="result">{win}</div>
-        <div className="info">{gameMode}</div>
-      </div>
-      <div className="match">
-        <img src={Ksante} />
-        <div className="kda">
-          <div className="real-kda">1/52/13</div>
-          <div className="avg-kda">0.27 Kda</div>
-        </div>
-        <div className="result">Victory</div>
-        <div className="info">Normal Draft</div>
-      </div>
-      <div className="match">
-        <img src={Ksante} />
-        <div className="kda">
-          <div className="real-kda">1/52/13</div>
-          <div className="avg-kda">0.27 Kda</div>
-        </div>
-        <div className="result">Victory</div>
-        <div className="info">Normal Draft</div>
-      </div>
-      <div className="match">
-        <img src={Ksante} />
-        <div className="kda">
-          <div className="real-kda">1/52/13</div>
-          <div className="avg-kda">0.27 Kda</div>
-        </div>
-        <div className="result">Victory</div>
-        <div className="info">Normal Draft</div>
-      </div>
+      {handleMatchHistory()}
     </div>
   );
 }

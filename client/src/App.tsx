@@ -8,15 +8,14 @@ import "semantic-ui-css/semantic.min.css";
 import { PlayerData } from "./components/PlayerData";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState } from "react";
-import { testContext } from "./components/utilities/useContext";
+import { playerContext } from "./components/utilities/useContext";
 
 function App() {
-  const [test, setTest] = useState("NigHToWL#8512");
-  const [leagueName, setLeagueName] = useState("bob");
-  const value = { test, setTest, leagueName, setLeagueName };
+  const [inputName, setInputName] = useState("NigHToWL#8512");
+  const value = { inputName, setInputName };
   return (
     <>
-      <testContext.Provider value={value}>
+      <playerContext.Provider value={value}>
         <div className="app-container">
           <BrowserRouter>
             <Routes>
@@ -42,7 +41,7 @@ function App() {
             </Routes>
           </BrowserRouter>
         </div>
-      </testContext.Provider>
+      </playerContext.Provider>
     </>
   );
 }
