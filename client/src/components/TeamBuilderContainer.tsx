@@ -1,18 +1,56 @@
 import "./TeamBuilderContainer.css";
 import Ahri from "../icons/ahri.png";
-import Ez from "../icons/ez.png";
+import Ez from "../icons/ezreal.png";
 import Kindred from "../icons/Kindred.png";
 import Yuumi from "../icons/yuumi.png";
-import Ksante from "../icons/Ksante.png";
+import Ksante from "../icons/K'sante.png";
 import Top from "../icons/Position_Plat-Top.png";
 import Jungle from "../icons/Position_Plat-Jungle.png";
 import Mid from "../icons/Position_Plat-Mid.png";
 import Bot from "../icons/Position_Plat-Bot.png";
 import Support from "../icons/Position_Plat-Support.png";
 import Fav from "../icons/favourites.png";
+import { Champions } from "./Champions";
+import { useEffect, useState } from "react";
 
 function TeamBuilderContainer() {
-  console.log("teambuilder was rendered");
+  // 164 champs total
+  const [objectOfChamps, setObjectOfChamps] = useState(
+    {} as Record<string, Record<string, Array<string> | string>>
+  );
+  useEffect(() => {
+    const fetchChampions = async () => {
+      const response = await fetch(
+        `https://ddragon.leagueoflegends.com/cdn/13.23.1/data/en_US/champion.json`
+      );
+      const data = await response.json();
+      const champs = data;
+      const keys = Object.keys(champs.data);
+      const newObjectOfChamps = {} as any;
+      for (let i = 0; i < keys.length; i++) {
+        newObjectOfChamps[`Champ-${i}`] = {
+          name: champs.data[keys[i]].name,
+          lanes: [],
+        };
+      }
+      setObjectOfChamps(newObjectOfChamps);
+    };
+    fetchChampions();
+  }, []);
+  console.log(objectOfChamps);
+  console.log("help:", Object.keys(objectOfChamps));
+  console.log(objectOfChamps["Champ-1"]);
+
+  const handleChampions = () => {
+    const allChamps = [];
+    for (let i = 0; i < Object.keys(objectOfChamps).length; i++) {
+      allChamps.push(
+        <Champions key={i} champ={objectOfChamps[`Champ-${i}`]}></Champions>
+      );
+    }
+    return allChamps;
+  };
+
   return (
     <div className="teamBuilderContainer">
       <div className="teamcompWrapper">
@@ -65,6 +103,7 @@ function TeamBuilderContainer() {
       </div>
       <div className="champList">
         <ul>Every champion here</ul>
+        {handleChampions()}
       </div>
     </div>
   );
