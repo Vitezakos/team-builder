@@ -1,9 +1,5 @@
 import "./TeamBuilderContainer.css";
-import Ahri from "../icons/ahri.png";
-import Ez from "../icons/ezreal.png";
-import Kindred from "../icons/Kindred.png";
-import Yuumi from "../icons/yuumi.png";
-import Ksante from "../icons/K'sante.png";
+
 import Top from "../icons/Position_Plat-Top.png";
 import Jungle from "../icons/Position_Plat-Jungle.png";
 import Mid from "../icons/Position_Plat-Mid.png";
@@ -12,6 +8,7 @@ import Support from "../icons/Position_Plat-Support.png";
 import Fav from "../icons/favourites.png";
 import { Champions } from "./Champions";
 import { useEffect, useState } from "react";
+import { TeamComp } from "./TeamComp";
 
 function TeamBuilderContainer() {
   // 164 champs total
@@ -37,9 +34,8 @@ function TeamBuilderContainer() {
     };
     fetchChampions();
   }, []);
+
   console.log(objectOfChamps);
-  console.log("help:", Object.keys(objectOfChamps));
-  console.log(objectOfChamps["Champ-1"]);
 
   const handleChampions = () => {
     const allChamps = [];
@@ -53,31 +49,7 @@ function TeamBuilderContainer() {
 
   return (
     <div className="teamBuilderContainer">
-      <div className="teamcompWrapper">
-        <div className="top">
-          <div>Your teamcomp:</div>
-          <div>
-            <ul className="teamIcons">
-              <li>
-                <img src={Ahri} />
-              </li>
-              <li>
-                <img src={Ez} />
-              </li>
-              <li>
-                <img src={Kindred} />
-              </li>
-              <li>
-                <img src={Yuumi} />
-              </li>
-              <li>
-                <img src={Ksante} />
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div>Bar placeholder</div>
-      </div>
+      <TeamComp></TeamComp>
       <div className="recommendationsWrapper">Recommendations:</div>
       <div className="laneSelection">
         <ul className="laneIcons">
@@ -101,10 +73,7 @@ function TeamBuilderContainer() {
           </li>
         </ul>
       </div>
-      <div className="champList">
-        <ul>Every champion here</ul>
-        {handleChampions()}
-      </div>
+      <div className="champList">{handleChampions()}</div>
     </div>
   );
 }

@@ -29,3 +29,8 @@
   height: 72px;
   width: 72px;
 }
+
+.champList {
+  display: flex;
+  flex-wrap: wrap;
+}
