@@ -1,14 +1,8 @@
 import "./TeamBuilderContainer.css";
-
-import Top from "../icons/Position_Plat-Top.png";
-import Jungle from "../icons/Position_Plat-Jungle.png";
-import Mid from "../icons/Position_Plat-Mid.png";
-import Bot from "../icons/Position_Plat-Bot.png";
-import Support from "../icons/Position_Plat-Support.png";
-import Fav from "../icons/favourites.png";
 import { Champions } from "./Champions";
 import { useEffect, useState } from "react";
 import { TeamComp } from "./TeamComp";
+import { Sorting } from "./Sorting";
 
 function TeamBuilderContainer() {
   // 164 champs total
@@ -50,29 +44,7 @@ function TeamBuilderContainer() {
   return (
     <div className="teamBuilderContainer">
       <TeamComp></TeamComp>
-      <div className="recommendationsWrapper">Recommendations:</div>
-      <div className="laneSelection">
-        <ul className="laneIcons">
-          <li>
-            <img src={Top} />
-          </li>
-          <li>
-            <img src={Jungle} />
-          </li>
-          <li>
-            <img src={Mid} />
-          </li>
-          <li>
-            <img src={Bot} />
-          </li>
-          <li>
-            <img src={Support} />
-          </li>
-          <li>
-            <img src={Fav} />
-          </li>
-        </ul>
-      </div>
+      <Sorting></Sorting>
       <div className="champList">{handleChampions()}</div>
     </div>
   );

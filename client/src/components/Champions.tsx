@@ -62,7 +62,7 @@ function Champions({ champ }: any) {
           </button>
         </div>
       ) : null}
-      <button className={champ.lane} onClick={handleClick}>
+      <button className={champ.name} onClick={handleClick}>
         <img src={`../src/icons/${champ.name}.png`} />
       </button>
     </div>
