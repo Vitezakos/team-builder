@@ -1,0 +1,25 @@
+.teamIcons {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+.laneIcons {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.laneIcons img {
+  height: 72px;
+  width: 72px;
+}
+
+.laneSelection {
+  margin-bottom: 2rem;
+}
+
+.hidden {
+  display: none;
+}

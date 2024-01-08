@@ -1,5 +1,6 @@
 import { playerContext } from "./utilities/useContext";
 import { useContext } from "react";
+import "./TeamComp.css";
 
 function TeamComp() {
   const { topName } = useContext(playerContext);
@@ -11,7 +12,7 @@ function TeamComp() {
   return (
     <div className="teamcompWrapper">
       <div className="top">
-        <div>Your teamcomp:</div>
+        {/* <div>Your teamcomp:</div> */}
         <div>
           <ul className="teamIcons">
             <li>

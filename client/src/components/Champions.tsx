@@ -6,6 +6,7 @@ import Support from "../icons/Position_Plat-Support.png";
 import { useRef, useState, useContext } from "react";
 import { useOnClickOutside } from "usehooks-ts";
 import { playerContext } from "./utilities/useContext";
+import "./Champions.css";
 
 function Champions({ champ }: any) {
   const selectionRef = useRef(null);

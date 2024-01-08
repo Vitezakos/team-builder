@@ -7,34 +7,6 @@
   color: white;
 }
 
-.teamIcons {
-  list-style: none;
-  display: flex;
-  gap: 2rem;
-}
-
-.top {
-  display: flex;
-  align-items: center;
-}
-
-.laneIcons {
-  list-style: none;
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-}
-
-.laneIcons img {
-  height: 72px;
-  width: 72px;
-}
-
-.champList {
-  display: flex;
-  flex-wrap: wrap;
-}
-
 .hidden {
   display: none;
 }
