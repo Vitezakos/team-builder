@@ -7,8 +7,6 @@ function PlayerData() {
     useProfileState();
   let summonerIcon = `https://ddragon.leagueoflegends.com/cdn/10.18.1/img/profileicon/${iconIdAndSummonerLevel.icon}.png`;
 
-  console.log("Playerdata currentgames:", currentGames);
-
   const handleMatchHistory = () => {
     const arrayOfMatches = [];
     for (let i = 0; i < currentGames.length; i++) {
@@ -28,7 +26,7 @@ function PlayerData() {
         </h1>
         <h1 className="summoner-level">Lv. {iconIdAndSummonerLevel.level}</h1>
       </div>
-      {handleMatchHistory()}
+      <div className="matches">{handleMatchHistory()}</div>
     </div>
   );
 }

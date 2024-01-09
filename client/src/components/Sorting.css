@@ -4,19 +4,19 @@
   gap: 2rem;
 }
 
-.laneIcons {
+.lane-icons {
   list-style: none;
   display: flex;
   gap: 1rem;
   justify-content: center;
 }
 
-.laneIcons img {
+.lane-icons img {
   height: 72px;
   width: 72px;
 }
 
-.laneSelection {
+.lane-selection {
   margin-bottom: 2rem;
 }
 

@@ -2,7 +2,7 @@
   display: none;
 }
 
-.champList {
+.champ-list {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -15,7 +15,7 @@
 }
 
 .btn-container img {
-  height: 65x;
+  height: 65px;
   width: 65px;
 }
 

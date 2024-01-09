@@ -28,7 +28,7 @@ function Header() {
     }
   };
   return (
-    <div className="headerContainer">
+    <div className="header-container">
       <button onClick={openSearch}>Search for player</button>
       <button
         onClick={() => {
@@ -38,13 +38,13 @@ function Header() {
         Team builder
       </button>
       {open ? (
-        <div className="searchContainer">
+        <div className="search-container">
           <div ref={ref} className="background">
-            <button className="serverBtn">Euw</button>
+            <button className="server-btn">Euw</button>
             <input
               ref={inputRef}
               onKeyUp={handleKey}
-              className="searchBar"
+              className="search-bar"
               type="text"
               placeholder="Summoner name..."
             />

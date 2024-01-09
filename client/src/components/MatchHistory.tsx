@@ -1,3 +1,5 @@
+import "./MatchHistory.css";
+
 const dummyGameData = {
   championName: "Ahri",
   kills: 8,
@@ -15,14 +17,14 @@ function MatchHistory({ gameDataDefault }: any) {
   } else {
     kda = ((game.kills + game.assists) / game.deaths).toFixed(2);
   }
-  return (  
+  return (
     <div className="match">
       <img src={`../src/icons/${game.championName}.png`} />
       <div className="kda">
         <div className="real-kda">{`${game.kills} / ${game.deaths} / ${game.assists}`}</div>
         <div className="avg-kda">{kda} KDA</div>
       </div>
-      <div className="result">{game.win}</div>  
+      <div className="result">{game.win}</div>
       <div className="info">{game.gameMode}</div>
     </div>
   );

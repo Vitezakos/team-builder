@@ -10,7 +10,7 @@ function TeamComp() {
   const { suppName } = useContext(playerContext);
 
   return (
-    <div className="teamcompWrapper">
+    <div className="teamcomp-wrapper">
       <div className="top">
         {/* <div>Your teamcomp:</div> */}
         <div>

@@ -242,8 +242,8 @@ function Sorting() {
   };
 
   return (
-    <div className="laneSelection">
-      <ul className="laneIcons">
+    <div className="lane-selection">
+      <ul className="lane-icons">
         <li>
           <img onClick={() => handleLaneSelection(topLane)} src={Top} />
         </li>

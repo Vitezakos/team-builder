@@ -42,10 +42,10 @@ function TeamBuilderContainer() {
   };
 
   return (
-    <div className="teamBuilderContainer">
+    <div className="teambuilder-container">
       <TeamComp></TeamComp>
       <Sorting></Sorting>
-      <div className="champList">{handleChampions()}</div>
+      <div className="champ-list">{handleChampions()}</div>
     </div>
   );
 }

@@ -1,14 +1,14 @@
-.headerContainer {
+.header-container {
   border-bottom: 1px #17191e;
   background-color: #13151b;
   width: 100%;
   display: flex;
-  height: 3em;
+  height: 3rem;
   align-items: center;
   justify-content: space-around;
 }
 
-.headerContainer button {
+.header-container button {
   display: flex;
   justify-content: center;
   color: #5b8baf;
@@ -18,7 +18,7 @@
   font-size: 26px;
 }
 
-.searchContainer {
+.search-container {
   position: absolute;
   height: 100%;
   width: 100%;
@@ -39,12 +39,12 @@
   align-items: center;
 }
 
-.headerContainer .searchContainer .background {
+.header-container .search-container .background {
   height: 10rem;
   width: 40rem;
 }
 
-.headerContainer .searchContainer .serverBtn {
+.header-container .search-container .server-btn {
   background-color: #1891ab;
   color: #fff;
   border-radius: 8px;
@@ -52,14 +52,14 @@
   width: 6rem;
   align-items: center;
 }
-.headerContainer .searchContainer .searchBar {
+.header-container .search-container .search-bar {
   background-color: #1891ab;
   color: #fff;
   height: 4rem;
   width: 25rem;
   border-radius: 8px;
 }
-.headerContainer .searchContainer .searchBar::placeholder {
+.header-container .search-container .search-bar::placeholder {
   font-family: "Mulish", sans-serif;
   font-size: 26px;
   color: #fff;
