@@ -5,3 +5,20 @@
   gap: 2rem;
   align-items: center;
 }
+
+.team-icons img {
+  --s: 120px;
+  height: var(--s);
+  width: var(--s);
+  clip-path: polygon(35% 0, 100% 0, 100% 65%, 65% 99%, 0 100%, 0 35%);
+  box-sizing: border-box;
+  object-fit: none;
+  background: #0e1015;
+  padding: 0;
+  transition: all 0.5s ease;
+}
+
+.team-icons .cover {
+  padding: calc(var(--s) / 2);
+  transition: unset;
+}

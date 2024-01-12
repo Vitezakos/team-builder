@@ -7,7 +7,7 @@ interface ProfileName {
 }
 
 const useProfileState = () => {
-  const apiKey = "RGAPI-fe968589-a93e-4bf1-8922-05ba2ed37e65";
+  const apiKey = "RGAPI-14f1cc28-69c1-44af-994d-60916d87d0dc";
   const [currentGames, setCurrentGames] = useState([] as Array<{}>);
   const [currentNameAndTagLine, setCurrentNameAndTagLine] = useState(
     {} as ProfileName

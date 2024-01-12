@@ -1,7 +1,8 @@
-.teamIcons {
+.team-icons {
   list-style: none;
   display: flex;
   gap: 2rem;
+  margin-top: 2rem;
 }
 
 .lane-icons {
@@ -9,11 +10,21 @@
   display: flex;
   gap: 1rem;
   justify-content: center;
+  height: 80px;
 }
 
 .lane-icons img {
   height: 72px;
   width: 72px;
+  cursor: pointer;
+}
+
+.lane-icons img:hover {
+  height: 75px;
+  width: 75px;
+}
+.lane-icons li {
+  width: 80px;
 }
 
 .lane-selection {
@@ -22,4 +33,18 @@
 
 .hidden {
   display: none;
+}
+
+.all-champs {
+  height: 72px;
+  width: 72px;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  cursor: pointer;
+}
+
+.all-champs svg:hover {
+  height: 55px;
+  width: 55px;
 }

@@ -11,54 +11,55 @@ import "./Champions.css";
 function Champions({ champ }: any) {
   const selectionRef = useRef(null);
   const [open, setOpen] = useState(false);
+
   useOnClickOutside(selectionRef, () =>
     setOpen((previousState) => !previousState)
   );
   const handleClick = () => {
     setOpen(true);
   };
-  const { setTopName } = useContext(playerContext);
-  const handleTopLane = () => {
-    setTopName(champ.name);
-    setOpen(false);
-  };
-  const { setJgName } = useContext(playerContext);
-  const handleJgLane = () => {
-    setJgName(champ.name);
-    setOpen(false);
-  };
-  const { setMidName } = useContext(playerContext);
-  const handleMidLane = () => {
-    setMidName(champ.name);
-    setOpen(false);
-  };
-  const { setBotName } = useContext(playerContext);
-  const handleBotLane = () => {
-    setBotName(champ.name);
-    setOpen(false);
-  };
-  const { setSuppName } = useContext(playerContext);
-  const handleSuppLane = () => {
-    setSuppName(champ.name);
+  const { setChampion } = useContext(playerContext);
+  const handleClickOnChampion = (lane: string) => {
+    setChampion({ lane, name: champ.name });
     setOpen(false);
   };
   return (
     <div className="btn-container">
       {open ? (
         <div ref={selectionRef} className="selection">
-          <button onClick={handleTopLane}>
+          <button
+            onClick={() => {
+              handleClickOnChampion("top");
+            }}
+          >
             <img src={Top} />
           </button>
-          <button onClick={handleJgLane}>
+          <button
+            onClick={() => {
+              handleClickOnChampion("jungle");
+            }}
+          >
             <img src={Jungle} />
           </button>
-          <button onClick={handleMidLane}>
+          <button
+            onClick={() => {
+              handleClickOnChampion("mid");
+            }}
+          >
             <img src={Mid} />
           </button>
-          <button onClick={handleBotLane}>
+          <button
+            onClick={() => {
+              handleClickOnChampion("bot");
+            }}
+          >
             <img src={Bot} />
           </button>
-          <button onClick={handleSuppLane}>
+          <button
+            onClick={() => {
+              handleClickOnChampion("supp");
+            }}
+          >
             <img src={Support} />
           </button>
         </div>

@@ -3,7 +3,7 @@ import Jungle from "../icons/Position_Plat-Jungle.png";
 import Mid from "../icons/Position_Plat-Mid.png";
 import Bot from "../icons/Position_Plat-Bot.png";
 import Support from "../icons/Position_Plat-Support.png";
-import All from "../icons/favourites.png";
+import { FillIcon } from "../icons/Fillsvg";
 import "./Sorting.css";
 
 function Sorting() {
@@ -260,7 +260,9 @@ function Sorting() {
           <img onClick={() => handleLaneSelection(support)} src={Support} />
         </li>
         <li>
-          <img onClick={showAllChamps} src={All} />
+          <div className="all-champs" onClick={showAllChamps}>
+            <FillIcon />
+          </div>
         </li>
       </ul>
     </div>

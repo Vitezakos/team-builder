@@ -12,24 +12,12 @@ import { playerContext } from "./components/utilities/useContext";
 
 function App() {
   const [inputName, setInputName] = useState("NigHToWL#8512");
-  const [topName, setTopName] = useState("K'sante");
-  const [jgName, setJgName] = useState("Kindred");
-  const [midName, setMidName] = useState("Ahri");
-  const [botName, setBotName] = useState("Ezreal");
-  const [suppName, setSuppName] = useState("Yuumi");
+  const [champion, setChampion] = useState({ lane: "mid", name: "ahri" });
   const value = {
     inputName,
     setInputName,
-    topName,
-    setTopName,
-    jgName,
-    setJgName,
-    midName,
-    setMidName,
-    botName,
-    setBotName,
-    suppName,
-    setSuppName,
+    champion,
+    setChampion,
   };
   return (
     <>

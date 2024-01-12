@@ -6,6 +6,9 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  gap: 1rem;
+  margin-left: 4rem;
+  margin-right: 4rem;
 }
 
 .btn-container {
@@ -33,4 +36,9 @@
 
 .selection button {
   background-color: #0e1015;
+  cursor: pointer;
+}
+
+button {
+  cursor: pointer;
 }
