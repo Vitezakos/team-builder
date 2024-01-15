@@ -7,14 +7,15 @@
   justify-content: center;
   flex-wrap: wrap;
   gap: 1rem;
-  margin-left: 4rem;
-  margin-right: 4rem;
+  margin-left: 8rem;
+  margin-right: 8rem;
 }
 
 .btn-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
 }
 
 .btn-container img {
@@ -41,4 +42,11 @@
 
 button {
   cursor: pointer;
+}
+
+.btn-container .selection {
+  border: 1px black solid;
+  position: absolute;
+  bottom: 70px;
+  display: flex;
 }

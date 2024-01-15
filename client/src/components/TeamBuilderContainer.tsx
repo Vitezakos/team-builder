@@ -3,12 +3,10 @@ import { Champions } from "./Champions";
 import { useEffect, useState } from "react";
 import { TeamComp } from "./TeamComp";
 import { Sorting } from "./Sorting";
+import { Champs } from "./utilities/consts";
 
 function TeamBuilderContainer() {
-  // 164 champs total
-  const [objectOfChamps, setObjectOfChamps] = useState(
-    {} as Record<string, Record<string, Array<string> | string>>
-  );
+  const [objectOfChamps, setObjectOfChamps] = useState({} as Array<Champs>);
   useEffect(() => {
     const fetchChampions = async () => {
       const response = await fetch(
@@ -17,26 +15,21 @@ function TeamBuilderContainer() {
       const data = await response.json();
       const champs = data;
       const keys = Object.keys(champs.data);
-      const newObjectOfChamps = {} as any;
+      const newObjectOfChamps = [];
       for (let i = 0; i < keys.length; i++) {
-        newObjectOfChamps[`Champ-${i}`] = {
-          name: champs.data[keys[i]].name,
-          lanes: [],
-        };
+        newObjectOfChamps.push({
+          name: champs.data[keys[i]].name as string,
+        });
       }
       setObjectOfChamps(newObjectOfChamps);
     };
     fetchChampions();
   }, []);
 
-  console.log(objectOfChamps);
-
   const handleChampions = () => {
     const allChamps = [];
     for (let i = 0; i < Object.keys(objectOfChamps).length; i++) {
-      allChamps.push(
-        <Champions key={i} champ={objectOfChamps[`Champ-${i}`]}></Champions>
-      );
+      allChamps.push(<Champions key={i} champ={objectOfChamps[i]}></Champions>);
     }
     return allChamps;
   };

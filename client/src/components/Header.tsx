@@ -15,11 +15,12 @@ function Header() {
   const navigate = useNavigate();
   const inputRef = useRef(null);
   const errorRef = useRef(null);
-  const handleKey = (event: any) => {
+
+  const handleKey = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if ((event.target as HTMLInputElement)?.value && event.key === "Enter") {
       navigate("/player");
       openSearch();
-      setInputName(event.target.value);
+      setInputName((event.target as HTMLInputElement).value);
     } else if (
       !(event.target as HTMLInputElement)?.value &&
       event.key === "Enter"
@@ -27,6 +28,7 @@ function Header() {
       (errorRef.current! as HTMLDivElement).classList.toggle("hidden");
     }
   };
+
   return (
     <div className="header-container">
       <button onClick={openSearch}>Search for player</button>

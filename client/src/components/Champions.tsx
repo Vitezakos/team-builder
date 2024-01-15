@@ -7,8 +7,9 @@ import { useRef, useState, useContext } from "react";
 import { useOnClickOutside } from "usehooks-ts";
 import { playerContext } from "./utilities/useContext";
 import "./Champions.css";
+import { Champs } from "./utilities/consts";
 
-function Champions({ champ }: any) {
+function Champions({ champ }: { champ: Champs }) {
   const selectionRef = useRef(null);
   const [open, setOpen] = useState(false);
 

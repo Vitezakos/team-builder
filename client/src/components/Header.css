@@ -27,6 +27,7 @@
   background-color: rgba(0, 0, 0, 0.9);
   justify-content: center;
   display: flex;
+  z-index: 1;
 }
 
 .background {

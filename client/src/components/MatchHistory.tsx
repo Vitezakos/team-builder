@@ -1,4 +1,5 @@
 import "./MatchHistory.css";
+import { TempData } from "./utilities/consts";
 
 const dummyGameData = {
   championName: "Ahri",
@@ -9,7 +10,7 @@ const dummyGameData = {
   gameMode: "ARAM",
 };
 
-function MatchHistory({ gameDataDefault }: any) {
+function MatchHistory({ gameDataDefault }: { gameDataDefault: TempData }) {
   const game = gameDataDefault ? gameDataDefault : dummyGameData;
   let kda = "";
   if (game.deaths == 0) {

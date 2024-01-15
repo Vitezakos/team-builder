@@ -1,15 +1,12 @@
 .teambuilder-container {
-  height: 100%;
   font-family: "Mulish", sans-serif;
   font-size: 26px;
   height: 100%;
   background-color: #0e1015;
   color: white;
-  padding-bottom: 271px;
+  height: 100vh;
 }
 
 .hidden {
   display: none;
 }
-
-

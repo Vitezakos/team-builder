@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { playerContext } from "./utilities/useContext";
+import { TempData } from "./utilities/consts";
 
 interface ProfileName {
   name?: string;
@@ -7,8 +8,8 @@ interface ProfileName {
 }
 
 const useProfileState = () => {
-  const apiKey = "RGAPI-14f1cc28-69c1-44af-994d-60916d87d0dc";
-  const [currentGames, setCurrentGames] = useState([] as Array<{}>);
+  const apiKey = "RGAPI-e38afd48-0b37-4339-a7e2-f6b82d221d3b";
+  const [currentGames, setCurrentGames] = useState([] as Array<TempData>);
   const [currentNameAndTagLine, setCurrentNameAndTagLine] = useState(
     {} as ProfileName
   );
@@ -26,7 +27,7 @@ const useProfileState = () => {
   }, [inputName]);
 
   const handleCurrentGames = async (riotApiCall: string) => {
-    const result: any = await fetchData(riotApiCall);
+    const result = (await fetchData(riotApiCall)) as Array<TempData>;
     setCurrentGames(result);
   };
 
@@ -67,7 +68,7 @@ const useProfileState = () => {
           `/riot-api/lol/match/v5/matches/${gameIds[i]}?api_key=${apiKey}`
         );
         const data = await response.json();
-        let tempData = {} as any;
+        let tempData = {} as TempData;
         tempData.gameMode = data.info.gameMode;
         for (let j = 0; j < data.info.participants.length; j++) {
           if (data.info.participants[j].puuid == puuid) {

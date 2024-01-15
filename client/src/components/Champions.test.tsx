@@ -5,7 +5,7 @@ import "@testing-library/jest-dom";
 describe("Champions", () => {
   it("should render a champion", () => {
     console.log("hello");
-    const dummyChampion = "Garen";
+    const dummyChampion = { name: "Garen" };
     const renderComponent = shallow(
       <Champions champ={dummyChampion}></Champions>
     );
