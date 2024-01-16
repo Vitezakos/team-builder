@@ -13,11 +13,13 @@ const dummyGameData = {
 function MatchHistory({ gameDataDefault }: { gameDataDefault: TempData }) {
   const game = gameDataDefault ? gameDataDefault : dummyGameData;
   let kda = "";
+
   if (game.deaths == 0) {
     kda = "Perfect";
   } else {
     kda = ((game.kills + game.assists) / game.deaths).toFixed(2);
   }
+
   return (
     <div className="match">
       <img src={`../src/icons/${game.championName}.png`} />

@@ -19,6 +19,7 @@ function App() {
     champion,
     setChampion,
   };
+
   return (
     <>
       <playerContext.Provider value={value}>

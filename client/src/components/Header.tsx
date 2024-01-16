@@ -6,15 +6,18 @@ import { playerContext } from "./utilities/useContext";
 
 function Header() {
   const { setInputName } = useContext(playerContext);
-  function openSearch() {
-    setOpen((previousState) => !previousState);
-  }
+
   const [open, setOpen] = useState(false);
   const ref = useRef(null);
-  useOnClickOutside(ref, () => setOpen((previousState) => !previousState));
   const navigate = useNavigate();
   const inputRef = useRef(null);
   const errorRef = useRef(null);
+
+  useOnClickOutside(ref, () => setOpen((previousState) => !previousState));
+
+  function openSearch() {
+    setOpen((previousState) => !previousState);
+  }
 
   const handleKey = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if ((event.target as HTMLInputElement)?.value && event.key === "Enter") {

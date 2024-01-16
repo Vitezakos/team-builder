@@ -12,18 +12,21 @@ import { Champs } from "./utilities/consts";
 function Champions({ champ }: { champ: Champs }) {
   const selectionRef = useRef(null);
   const [open, setOpen] = useState(false);
+  const { setChampion } = useContext(playerContext);
 
   useOnClickOutside(selectionRef, () =>
     setOpen((previousState) => !previousState)
   );
+
   const handleClick = () => {
     setOpen(true);
   };
-  const { setChampion } = useContext(playerContext);
+
   const handleClickOnChampion = (lane: string) => {
     setChampion({ lane, name: champ.name });
     setOpen(false);
   };
+
   return (
     <div className="btn-container">
       {open ? (

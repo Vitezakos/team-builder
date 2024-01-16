@@ -8,7 +8,7 @@ interface ProfileName {
 }
 
 const useProfileState = () => {
-  const apiKey = "RGAPI-e38afd48-0b37-4339-a7e2-f6b82d221d3b";
+  const apiKey = "";
   const [currentGames, setCurrentGames] = useState([] as Array<TempData>);
   const [currentNameAndTagLine, setCurrentNameAndTagLine] = useState(
     {} as ProfileName
@@ -60,6 +60,7 @@ const useProfileState = () => {
       console.error("Error fetching data:", error);
     }
   };
+
   const handleLeagueGames = async (gameIds: Array<{}>, puuid: string) => {
     const gamesInfo = [] as Array<{}>;
     for (let i = 0; i < 10; i++) {

@@ -7,6 +7,7 @@ import { Champs } from "./utilities/consts";
 
 function TeamBuilderContainer() {
   const [objectOfChamps, setObjectOfChamps] = useState({} as Array<Champs>);
+
   useEffect(() => {
     const fetchChampions = async () => {
       const response = await fetch(

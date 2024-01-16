@@ -53,6 +53,7 @@
   width: 6rem;
   align-items: center;
 }
+
 .header-container .search-container .search-bar {
   background-color: #1891ab;
   color: #fff;
@@ -60,11 +61,13 @@
   width: 25rem;
   border-radius: 8px;
 }
+
 .header-container .search-container .search-bar::placeholder {
   font-family: "Mulish", sans-serif;
   font-size: 26px;
   color: #fff;
 }
+
 .hidden {
   display: none;
 }
