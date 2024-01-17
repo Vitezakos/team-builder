@@ -10,19 +10,20 @@ describe("Champions", () => {
         value={{
           inputName: "NightOwl#8512",
           setInputName: jest.fn(),
-          topName: "Garen",
-          setTopName: jest.fn(),
-          jgName: "Rammus",
-          setJgName: jest.fn(),
-          midName: "Anivia",
-          setMidName: jest.fn(),
-          botName: "Ashe",
-          setBotName: jest.fn(),
-          suppName: "Sona",
-          setSuppName: jest.fn(),
+          champion: { lane: "mid", name: "Ahri" },
+          setChampion: jest.fn(),
         }}
       >
-        <MatchHistory></MatchHistory>
+        <MatchHistory
+          gameDataDefault={{
+            championName: "Ahri",
+            kills: 8,
+            deaths: 2,
+            assists: 3,
+            win: "victory",
+            gameMode: "ARAM",
+          }}
+        ></MatchHistory>
       </playerContext.Provider>
     );
     expect(renderComponent).toBeTruthy();

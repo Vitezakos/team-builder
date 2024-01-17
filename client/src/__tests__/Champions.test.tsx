@@ -1,4 +1,4 @@
-import { Champions } from "./Champions";
+import { Champions } from "../components/Champions";
 import { shallow } from "enzyme";
 import "@testing-library/jest-dom";
 
