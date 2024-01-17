@@ -33,7 +33,7 @@ function Header() {
   };
 
   return (
-    <div className="header-container">
+    <div className="header-container" role="container">
       <button onClick={openSearch}>Search for player</button>
       <button
         onClick={() => {

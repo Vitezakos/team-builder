@@ -7,7 +7,7 @@ module.exports = {
   transformIgnorePatterns: ["<rootDir>/node_modules/"],
   moduleDirectories: ["node_modules", "<rootDir>"],
   moduleNameMapper: {
-    "\\.(gif|ttf|eot|svg|png)$": "<rootDir>/src/test/__ mocks __/fileMock.js",
+    "\\.(gif|ttf|eot|svg|png)$": "<rootDir>/src/test/__mocks__/fileMock.js",
     "\\.(css)$": "identity-obj-proxy",
     "^@/(.*)$": "<rootDir>/$1",
   },

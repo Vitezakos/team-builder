@@ -30,7 +30,7 @@ function Champions({ champ }: { champ: Champs }) {
   return (
     <div className="btn-container">
       {open ? (
-        <div ref={selectionRef} className="selection">
+        <div ref={selectionRef} className="selection" data-testid="open">
           <button
             onClick={() => {
               handleClickOnChampion("top");
@@ -68,7 +68,11 @@ function Champions({ champ }: { champ: Champs }) {
           </button>
         </div>
       ) : null}
-      <button className={champ.name} onClick={handleClick}>
+      <button
+        className={champ.name}
+        onClick={handleClick}
+        data-testid="champ-button"
+      >
         <img src={`../src/icons/${champ.name}.png`} />
       </button>
     </div>
