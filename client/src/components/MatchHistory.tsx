@@ -10,7 +10,7 @@ const dummyGameData = {
   gameMode: "ARAM",
 };
 
-function MatchHistory({ gameDataDefault }: { gameDataDefault: TempData }) {
+function MatchHistory({ gameDataDefault }: { gameDataDefault?: TempData }) {
   const game = gameDataDefault ? gameDataDefault : dummyGameData;
   let kda = "";
 

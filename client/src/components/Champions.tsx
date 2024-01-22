@@ -72,6 +72,7 @@ function Champions({ champ }: { champ: Champs }) {
         className={champ.name}
         onClick={handleClick}
         data-testid="champ-button"
+        role="champ-roleBtn"
       >
         <img src={`../src/icons/${champ.name}.png`} />
       </button>

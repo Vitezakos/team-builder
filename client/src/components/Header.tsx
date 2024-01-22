@@ -4,6 +4,12 @@ import { useOnClickOutside } from "usehooks-ts";
 import { Outlet, useNavigate } from "react-router-dom";
 import { playerContext } from "./utilities/useContext";
 
+const mockUsedNavigate = jest.fn();
+jest.mock("react-router-dom", () => ({
+  ...jest.requireActual("react-router-dom"),
+  useNavigate: () => mockUsedNavigate,
+}));
+
 function Header() {
   const { setInputName } = useContext(playerContext);
 
@@ -33,8 +39,14 @@ function Header() {
   };
 
   return (
-    <div className="header-container" role="container">
-      <button onClick={openSearch}>Search for player</button>
+    <div
+      className="header-container"
+      role="container"
+      data-testid="test-container"
+    >
+      <button onClick={openSearch} data-testid="test-btn">
+        Search for player
+      </button>
       <button
         onClick={() => {
           navigate("/");
@@ -43,7 +55,7 @@ function Header() {
         Team builder
       </button>
       {open ? (
-        <div className="search-container">
+        <div className="search-container" data-testid="test-search">
           <div ref={ref} className="background">
             <button className="server-btn">Euw</button>
             <input
@@ -52,8 +64,13 @@ function Header() {
               className="search-bar"
               type="text"
               placeholder="Summoner name..."
+              data-testid="test-input"
             />
-            <div ref={errorRef} className="errorMessage hidden">
+            <div
+              ref={errorRef}
+              className="errorMessage hidden"
+              data-testid="test-error"
+            >
               Error, can't be empty
             </div>
           </div>

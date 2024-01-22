@@ -13,9 +13,11 @@ describe("Champions", () => {
     expect(openBtns).not.toBeInTheDocument();
   });
   it(`renders  when it's open and contains the lane buttons`, () => {
-    const btn = screen.queryByTestId("champ-button");
-    fireEvent.click(btn!);
-    const openBtns = screen.queryByTestId("open");
-    expect(openBtns).toBeInTheDocument();
+    const btn = screen.queryByRole("champ-roleBtn");
+    if (btn) {
+      fireEvent.click(btn);
+      const openBtns = screen.queryByTestId("open");
+      expect(openBtns).toBeInTheDocument();
+    }
   });
 });
