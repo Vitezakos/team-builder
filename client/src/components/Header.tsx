@@ -4,11 +4,7 @@ import { useOnClickOutside } from "usehooks-ts";
 import { Outlet, useNavigate } from "react-router-dom";
 import { playerContext } from "./utilities/useContext";
 
-const mockUsedNavigate = jest.fn();
-jest.mock("react-router-dom", () => ({
-  ...jest.requireActual("react-router-dom"),
-  useNavigate: () => mockUsedNavigate,
-}));
+
 
 function Header() {
   const { setInputName } = useContext(playerContext);

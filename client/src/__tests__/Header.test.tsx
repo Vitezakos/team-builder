@@ -6,6 +6,12 @@ import { createMemoryHistory } from "history";
 import { Router } from "react-router";
 import { playerContext } from "@/components/utilities/useContext";
 
+const mockUsedNavigate = jest.fn();
+jest.mock("react-router-dom", () => ({
+  ...jest.requireActual("react-router-dom"),
+  useNavigate: () => mockUsedNavigate,
+}));
+
 describe("Champions", () => {
   render(
     <MemoryRouter>
