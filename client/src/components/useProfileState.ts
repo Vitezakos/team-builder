@@ -12,7 +12,7 @@ interface Participant {
 }
 
 const useProfileState = () => {
-  const apiKey = "RGAPI-4c367ecf-f96c-4bfd-863c-38cb3aa449b5";
+  const apiKey = "";
   const [currentGames, setCurrentGames] = useState<TempData[]>([]);
   const [currentNameAndTagLine, setCurrentNameAndTagLine] =
     useState<ProfileName>({ name: "", tagLine: "" });
