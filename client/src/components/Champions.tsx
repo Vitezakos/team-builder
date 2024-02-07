@@ -74,7 +74,7 @@ function Champions({ champ }: { champ: Champs }) {
         data-testid="champ-button"
         role="champ-roleBtn"
       >
-        <img src={`../src/icons/${champ.name}.png`} />
+        <img className="champion-img" src={`../src/icons/${champ.name}.png`} />
       </button>
     </div>
   );

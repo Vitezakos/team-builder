@@ -14,7 +14,7 @@ function MatchHistory({ gameDataDefault }: { gameDataDefault?: TempData }) {
   const game = gameDataDefault ? gameDataDefault : dummyGameData;
   let kda = "";
 
-  if (game.deaths == 0) {
+  if (game.deaths === 0) {
     kda = "Perfect";
   } else {
     kda = ((game.kills + game.assists) / game.deaths).toFixed(2);
@@ -22,7 +22,10 @@ function MatchHistory({ gameDataDefault }: { gameDataDefault?: TempData }) {
 
   return (
     <div className="match">
-      <img src={`../src/icons/${game.championName}.png`} />
+      <img
+        className="match-img"
+        src={`../src/icons/${game.championName}.png`}
+      />
       <div className="kda">
         <div className="real-kda">{`${game.kills} / ${game.deaths} / ${game.assists}`}</div>
         <div className="avg-kda">{kda} KDA</div>

@@ -12,7 +12,6 @@ function Header() {
   const [open, setOpen] = useState(false);
   const ref = useRef(null);
   const navigate = useNavigate();
-  const inputRef = useRef(null);
   const errorRef = useRef(null);
 
   useOnClickOutside(ref, () => setOpen((previousState) => !previousState));
@@ -55,7 +54,6 @@ function Header() {
           <div ref={ref} className="background">
             <button className="server-btn">Euw</button>
             <input
-              ref={inputRef}
               onKeyUp={handleKey}
               className="search-bar"
               type="text"

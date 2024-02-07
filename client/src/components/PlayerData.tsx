@@ -8,19 +8,15 @@ function PlayerData() {
   let summonerIcon = `https://ddragon.leagueoflegends.com/cdn/10.18.1/img/profileicon/${iconIdAndSummonerLevel.icon}.png`;
 
   const handleMatchHistory = () => {
-    const arrayOfMatches = [];
-    for (let i = 0; i < currentGames.length; i++) {
-      arrayOfMatches.push(
-        <MatchHistory key={i} gameDataDefault={currentGames[i]}></MatchHistory>
-      );
-    }
-    return arrayOfMatches;
+    return currentGames.map((gameData, index) => (
+      <MatchHistory key={index} gameDataDefault={gameData}></MatchHistory>
+    ));
   };
 
   return (
     <div className="player-container">
       <div className="summoner">
-        <img src={summonerIcon} alt="" />
+        <img className="playerdata-img" src={summonerIcon} alt="" />
         <h1 className="summoner-name">
           {currentNameAndTagLine.name + "#" + currentNameAndTagLine.tagLine}
         </h1>

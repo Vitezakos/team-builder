@@ -7,12 +7,15 @@ interface ProfileName {
   tagLine?: string;
 }
 
+interface Participant {
+  puuid: string;
+}
+
 const useProfileState = () => {
-  const apiKey = "";
-  const [currentGames, setCurrentGames] = useState([] as Array<TempData>);
-  const [currentNameAndTagLine, setCurrentNameAndTagLine] = useState(
-    {} as ProfileName
-  );
+  const apiKey = "RGAPI-4c367ecf-f96c-4bfd-863c-38cb3aa449b5";
+  const [currentGames, setCurrentGames] = useState<TempData[]>([]);
+  const [currentNameAndTagLine, setCurrentNameAndTagLine] =
+    useState<ProfileName>({ name: "", tagLine: "" });
   const [iconIdAndSummonerLevel, setIconIdAndSummonerLevel] = useState({
     icon: 10,
     level: 0,
@@ -20,8 +23,7 @@ const useProfileState = () => {
   const { inputName } = useContext(playerContext);
 
   useEffect(() => {
-    let riotName = inputName.split("#")[0];
-    let riotTagLine = inputName.split("#")[1];
+    const [riotName, riotTagLine] = inputName.split("#");
     let riotAccountLink = `/riot-api/riot/account/v1/accounts/by-riot-id/${riotName}/${riotTagLine}?api_key=${apiKey}`;
     handleCurrentGames(riotAccountLink);
   }, [inputName]);
@@ -35,10 +37,6 @@ const useProfileState = () => {
     try {
       const response = await fetch(argument);
       const data = await response.json();
-      setCurrentNameAndTagLine({
-        name: data.gameName,
-        tagLine: data.tagLine + "",
-      });
       const currentPuuid = data.puuid;
       const puuidCall = `/riot-api/lol/match/v5/matches/by-puuid/${currentPuuid}/ids?start=0&count=20&api_key=${apiKey}`;
       const puuidResponse = await fetch(puuidCall);
@@ -51,6 +49,10 @@ const useProfileState = () => {
       const summonerInfoCall = `https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-puuid/${currentPuuid}?api_key=${apiKey}`;
       const summonerInfoResponse = await fetch(summonerInfoCall);
       const summonerInfoData = await summonerInfoResponse.json();
+      setCurrentNameAndTagLine({
+        name: data.gameName,
+        tagLine: data.tagLine + "",
+      });
       setIconIdAndSummonerLevel({
         icon: summonerInfoData.profileIconId,
         level: summonerInfoData.summonerLevel,
@@ -71,21 +73,22 @@ const useProfileState = () => {
         const data = await response.json();
         let tempData = {} as TempData;
         tempData.gameMode = data.info.gameMode;
-        for (let j = 0; j < data.info.participants.length; j++) {
-          if (data.info.participants[j].puuid == puuid) {
-            tempData.championName =
-              data.info.participants[j].championName.toLowerCase();
-            tempData.kills = data.info.participants[j].kills;
-            tempData.deaths = data.info.participants[j].deaths;
-            tempData.assists = data.info.participants[j].assists;
-            if (data.info.participants[j].win) {
-              tempData.win = "Victory";
-            } else {
-              tempData.win = "Defeat";
-            }
-            gamesInfo.push(tempData);
+
+        const x = data.info.participants.filter(
+          (participant: Participant) => participant.puuid == puuid
+        );
+        x.map((game: TempData) => {
+          tempData.championName = game.championName.toLowerCase();
+          tempData.kills = game.kills;
+          tempData.deaths = game.deaths;
+          tempData.assists = game.assists;
+          if (game.win) {
+            tempData.win = "Victory";
+          } else {
+            tempData.win = "Defeat";
           }
-        }
+          gamesInfo.push(tempData);
+        });
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -100,5 +103,3 @@ const useProfileState = () => {
   };
 };
 export { useProfileState };
-
-//custom hook

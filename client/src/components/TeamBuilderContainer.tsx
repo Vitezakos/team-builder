@@ -6,7 +6,7 @@ import { Sorting } from "./Sorting";
 import { Champs } from "./utilities/consts";
 
 function TeamBuilderContainer() {
-  const [objectOfChamps, setObjectOfChamps] = useState({} as Array<Champs>);
+  const [objectOfChamps, setObjectOfChamps] = useState<Array<Champs>>([]);
 
   useEffect(() => {
     const fetchChampions = async () => {
@@ -15,24 +15,24 @@ function TeamBuilderContainer() {
       );
       const data = await response.json();
       const champs = data;
-      const keys = Object.keys(champs.data);
-      const newObjectOfChamps = [];
-      for (let i = 0; i < keys.length; i++) {
-        newObjectOfChamps.push({
-          name: champs.data[keys[i]].name as string,
-        });
-      }
+      const newObjectOfChamps = Object.values(champs.data).map(
+        (champ: any) => ({
+          name: champ.name as string,
+        })
+      );
       setObjectOfChamps(newObjectOfChamps);
     };
-    fetchChampions();
+    try {
+      fetchChampions();
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
   }, []);
 
   const handleChampions = () => {
-    const allChamps = [];
-    for (let i = 0; i < Object.keys(objectOfChamps).length; i++) {
-      allChamps.push(<Champions key={i} champ={objectOfChamps[i]}></Champions>);
-    }
-    return allChamps;
+    return objectOfChamps.map((champion, index) => (
+      <Champions key={index} champ={champion}></Champions>
+    ));
   };
 
   return (

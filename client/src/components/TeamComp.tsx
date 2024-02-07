@@ -17,48 +17,50 @@ function TeamComp() {
   const suppRef = useRef(null);
 
   useEffect(() => {
+    let timeOutId: ReturnType<typeof setTimeout> = setTimeout(() => {});
+    const timeOut = (lane: HTMLDivElement) => {
+      lane.classList.add("cover");
+      timeOutId = setTimeout(() => {
+        lane.classList.remove("cover");
+      });
+    };
+
     switch (champion.lane) {
       case "top":
         setTopName(champion.name);
         const top = topRef.current! as HTMLDivElement;
         top.classList.add("cover");
-        setTimeout(() => {
-          top.classList.remove("cover");
-        });
+        timeOut(top);
         break;
       case "jungle":
         setJgTopName(champion.name);
         const jg = jgRef.current! as HTMLDivElement;
         jg.classList.add("cover");
-        setTimeout(() => {
-          jg.classList.remove("cover");
-        });
+        timeOut(jg);
         break;
       case "mid":
         setMidTopName(champion.name);
         const mid = midRef.current! as HTMLDivElement;
         mid.classList.add("cover");
-        setTimeout(() => {
-          mid.classList.remove("cover");
-        });
+        timeOut(mid);
         break;
       case "bot":
         setBotTopName(champion.name);
         const bot = botRef.current! as HTMLDivElement;
         bot.classList.add("cover");
-        setTimeout(() => {
-          bot.classList.remove("cover");
-        });
+        timeOut(bot);
         break;
       default:
         setSuppTopName(champion.name);
         const supp = suppRef.current! as HTMLDivElement;
         supp.classList.add("cover");
-        setTimeout(() => {
-          supp.classList.remove("cover");
-        });
+        timeOut(supp);
         break;
     }
+
+    return () => {
+      clearTimeout(timeOutId);
+    };
   }, [champion]);
 
   return (
