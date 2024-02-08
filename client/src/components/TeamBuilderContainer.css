@@ -3,6 +3,7 @@
   font-size: 26px;
   background-color: #0e1015;
   color: white;
+  min-height: calc(100vh - 42px);
 }
 
 .hidden {
