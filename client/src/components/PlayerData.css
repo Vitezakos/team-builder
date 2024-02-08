@@ -36,7 +36,7 @@ h1 {
   color: #4979d4;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 850px) {
   .summoner {
     flex-direction: column;
   }
@@ -49,14 +49,14 @@ h1 {
     font-size: 30px;
   }
 
-  .match {
+  .player-container .matches .match {
     width: 100%;
     font-size: 25px;
     gap: unset;
     justify-content: space-around;
   }
 
-  .match-stats {
+  .player-container .matches .match .match-stats {
     flex-direction: column;
     gap: 1rem;
   }

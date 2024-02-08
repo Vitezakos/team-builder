@@ -40,6 +40,7 @@ function TeamBuilderContainer() {
       <TeamComp></TeamComp>
       <Sorting></Sorting>
       <div className="champ-list">{handleChampions()}</div>
+      <div className="footer"></div>
     </div>
   );
 }
