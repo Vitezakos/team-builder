@@ -60,6 +60,7 @@
   height: 4rem;
   width: 25rem;
   border-radius: 8px;
+  font-size: 26px;
 }
 
 .header-container .search-container .search-bar::placeholder {
@@ -70,4 +71,8 @@
 
 .hidden {
   display: none;
+}
+
+.error-message {
+  color: red;
 }

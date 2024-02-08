@@ -4,8 +4,6 @@ import { useOnClickOutside } from "usehooks-ts";
 import { Outlet, useNavigate } from "react-router-dom";
 import { playerContext } from "./utilities/useContext";
 
-
-
 function Header() {
   const { setInputName } = useContext(playerContext);
 
@@ -62,7 +60,7 @@ function Header() {
             />
             <div
               ref={errorRef}
-              className="errorMessage hidden"
+              className="error-message hidden"
               data-testid="test-error"
             >
               Error, can't be empty

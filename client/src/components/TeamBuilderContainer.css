@@ -10,3 +10,61 @@
 .hidden {
   display: none;
 }
+
+@media only screen and (max-width: 600px) {
+  .header-container {
+    height: 5rem;
+  }
+
+  .header-container .search-container .search-bar {
+    width: 19rem;
+  }
+
+  .error-message {
+    position: absolute;
+    bottom: 1rem;
+    font-size: 20px;
+  }
+
+  .team-icons {
+    padding: 0;
+    flex-direction: column;
+  }
+
+  .team-icons img {
+    --s: 90px;
+  }
+
+  .teambuilder-container {
+    height: unset;
+  }
+
+  .lane-icons {
+    flex-direction: column;
+  }
+
+  .teambuilder-container .lane-selection {
+    position: relative;
+    top: 17.6rem;
+    left: -2rem;
+    margin-bottom: -3rem;
+  }
+
+  .selection {
+    flex-wrap: wrap;
+  }
+
+  .teambuilder-container .champ-list {
+    margin-left: 7rem;
+    margin-right: 3rem;
+  }
+
+  .lane-selection .lane-icons .all-champs {
+    justify-content: center;
+    align-content: normal;
+  }
+
+  .search-bar {
+    font-size: 26px;
+  }
+}

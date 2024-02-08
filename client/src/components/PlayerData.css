@@ -35,3 +35,44 @@ h1 {
 .summoner-level {
   color: #4979d4;
 }
+
+@media only screen and (max-width: 600px) {
+  .summoner {
+    flex-direction: column;
+  }
+
+  .summoner img {
+    height: 8rem;
+  }
+
+  .summoner h1 {
+    font-size: 30px;
+  }
+
+  .match {
+    width: 100%;
+    font-size: 25px;
+    gap: unset;
+    justify-content: space-around;
+  }
+
+  .match-stats {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .match .image-container .match-img {
+    width: 90px;
+    height: 90px;
+  }
+
+  .result {
+    display: flex;
+    justify-content: center;
+  }
+
+  .info {
+    display: flex;
+    justify-content: center;
+  }
+}

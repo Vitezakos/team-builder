@@ -25,6 +25,12 @@
   height: 120px;
 }
 
+.match-stats {
+  display: flex;
+  gap: 4rem;
+  align-items: center;
+}
+
 .kda {
   display: flex;
   flex-direction: column;

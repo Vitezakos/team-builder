@@ -22,16 +22,20 @@ function MatchHistory({ gameDataDefault }: { gameDataDefault?: TempData }) {
 
   return (
     <div className="match">
-      <img
-        className="match-img"
-        src={`../src/icons/${game.championName}.png`}
-      />
-      <div className="kda">
-        <div className="real-kda">{`${game.kills} / ${game.deaths} / ${game.assists}`}</div>
-        <div className="avg-kda">{kda} KDA</div>
+      <div className="image-container">
+        <img
+          className="match-img"
+          src={`../src/icons/${game.championName}.png`}
+        />
       </div>
-      <div className="result">{game.win}</div>
-      <div className="info">{game.gameMode}</div>
+      <div className="match-stats">
+        <div className="kda">
+          <div className="real-kda">{`${game.kills} / ${game.deaths} / ${game.assists}`}</div>
+          <div className="avg-kda">{kda} KDA</div>
+        </div>
+        <div className="result">{game.win}</div>
+        <div className="info">{game.gameMode}</div>
+      </div>
     </div>
   );
 }
