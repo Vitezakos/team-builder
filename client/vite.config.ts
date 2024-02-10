@@ -19,4 +19,5 @@ export default defineConfig({
       },
     },
   },
+  base: "/team-builder/",
 });
