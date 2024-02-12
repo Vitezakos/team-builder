@@ -28,6 +28,10 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          repository: 'team-builder/client'
       - name: Set up Node
         uses: actions/setup-node@v3
         with:
