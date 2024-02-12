@@ -19,5 +19,5 @@ export default defineConfig({
       },
     },
   },
-  base: "/client",
+  base: "/team-builder",
 });
