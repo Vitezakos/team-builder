@@ -25,7 +25,7 @@ function MatchHistory({ gameDataDefault }: { gameDataDefault?: TempData }) {
       <div className="image-container">
         <img
           className="match-img"
-          src={`../src/icons/${game.championName}.png`}
+          src={`../public/icons/${game.championName}.png`}
         />
       </div>
       <div className="match-stats">

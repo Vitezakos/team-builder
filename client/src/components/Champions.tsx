@@ -1,8 +1,8 @@
-import Top from "../icons/Position_Plat-Top.png";
-import Jungle from "../icons/Position_Plat-Jungle.png";
-import Mid from "../icons/Position_Plat-Mid.png";
-import Bot from "../icons/Position_Plat-Bot.png";
-import Support from "../icons/Position_Plat-Support.png";
+import Top from "../../public/icons/Position_Plat-Top.png";
+import Jungle from "../../public/icons/Position_Plat-Jungle.png";
+import Mid from "../../public/icons/Position_Plat-Mid.png";
+import Bot from "../../public/icons/Position_Plat-Bot.png";
+import Support from "../../public/icons/Position_Plat-Support.png";
 import { useRef, useState, useContext } from "react";
 import { useOnClickOutside } from "usehooks-ts";
 import { playerContext } from "./utilities/useContext";
@@ -74,7 +74,10 @@ function Champions({ champ }: { champ: Champs }) {
         data-testid="champ-button"
         role="champ-roleBtn"
       >
-        <img className="champion-img" src={`../src/icons/${champ.name}.png`} />
+        <img
+          className="champion-img"
+          src={`../public/icons/${champ.name}.png`}
+        />
       </button>
     </div>
   );

@@ -1,8 +1,8 @@
-import Top from "../icons/Position_Plat-Top.png";
-import Jungle from "../icons/Position_Plat-Jungle.png";
-import Mid from "../icons/Position_Plat-Mid.png";
-import Bot from "../icons/Position_Plat-Bot.png";
-import Support from "../icons/Position_Plat-Support.png";
+import Top from "../../public/icons/Position_Plat-Top.png";
+import Jungle from "../../public/icons/Position_Plat-Jungle.png";
+import Mid from "../../public/icons/Position_Plat-Mid.png";
+import Bot from "../../public/icons/Position_Plat-Bot.png";
+import Support from "../../public/icons/Position_Plat-Support.png";
 import { FillIcon } from "../../public/icons/Fillsvg";
 import "./Sorting.css";
 import { topLane, jungle, midLane, adc, support } from "./utilities/consts";

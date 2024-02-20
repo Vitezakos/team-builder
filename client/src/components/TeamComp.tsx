@@ -72,35 +72,35 @@ function TeamComp() {
               <img
                 ref={topRef}
                 className="team-top"
-                src={`../src/icons/${topName}.png`}
+                src={`../public/icons/${topName}.png`}
               />
             </li>
             <li>
               <img
                 ref={jgRef}
                 className="team-jg"
-                src={`../src/icons/${jgName}.png`}
+                src={`../public/icons/${jgName}.png`}
               />
             </li>
             <li>
               <img
                 ref={midRef}
                 className="team-mid"
-                src={`../src/icons/${midName}.png`}
+                src={`../public/icons/${midName}.png`}
               />
             </li>
             <li>
               <img
                 ref={botRef}
                 className="team-bot"
-                src={`../src/icons/${botName}.png`}
+                src={`../public/icons/${botName}.png`}
               />
             </li>
             <li>
               <img
                 ref={suppRef}
                 className="team-supp"
-                src={`../src/icons/${suppName}.png`}
+                src={`../public/icons/${suppName}.png`}
               />
             </li>
           </ul>
