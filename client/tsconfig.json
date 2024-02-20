@@ -27,6 +27,6 @@
       "@/*": ["src/*"]
     }
   },
-  "include": ["src"],
+  "include": ["src", "public/icons"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
