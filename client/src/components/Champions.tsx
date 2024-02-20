@@ -13,6 +13,7 @@ function Champions({ champ }: { champ: Champs }) {
   const selectionRef = useRef(null);
   const [open, setOpen] = useState(false);
   const { setChampion } = useContext(playerContext);
+  const { location } = useContext(playerContext);
 
   useOnClickOutside(selectionRef, () =>
     setOpen((previousState) => !previousState)
@@ -76,7 +77,11 @@ function Champions({ champ }: { champ: Champs }) {
       >
         <img
           className="champion-img"
-          src={`../public/icons/${champ.name}.png`}
+          src={
+            location === "stage"
+              ? `../public/icons/${champ.name}.png`
+              : `/team-builder/icons/${champ.name}.png`
+          }
         />
       </button>
     </div>

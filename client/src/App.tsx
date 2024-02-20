@@ -10,11 +10,16 @@ import { playerContext } from "./components/utilities/useContext";
 function App() {
   const [inputName, setInputName] = useState("NigHToWL#8512");
   const [champion, setChampion] = useState({ lane: "mid", name: "ahri" });
+  const [location, setLocation] = useState(
+    window.location.hostname === "localhost" ? "stage" : "production"
+  );
   const value = {
     inputName,
     setInputName,
     champion,
     setChampion,
+    location,
+    setLocation,
   };
 
   return (
