@@ -1,5 +1,7 @@
+import { useContext } from "react";
 import "./MatchHistory.css";
 import { TempData } from "./utilities/consts";
+import { playerContext } from "./utilities/useContext";
 
 const dummyGameData = {
   championName: "Ahri",
@@ -11,6 +13,7 @@ const dummyGameData = {
 };
 
 function MatchHistory({ gameDataDefault }: { gameDataDefault?: TempData }) {
+  const { location } = useContext(playerContext);
   const game = gameDataDefault ? gameDataDefault : dummyGameData;
   let kda = "";
 
@@ -25,7 +28,11 @@ function MatchHistory({ gameDataDefault }: { gameDataDefault?: TempData }) {
       <div className="image-container">
         <img
           className="match-img"
-          src={`../public/icons/${game.championName}.png`}
+          src={
+            location === "stage"
+              ? `../public/icons/${game.championName}.png`
+              : `/team-builder/icons/${game.championName}.png`
+          }
         />
       </div>
       <div className="match-stats">

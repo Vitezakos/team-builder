@@ -3,7 +3,7 @@ import { useContext, useEffect, useRef, useState } from "react";
 import "./TeamComp.css";
 
 function TeamComp() {
-  const [topName, setTopName] = useState("K'sante");
+  const [topName, setTopName] = useState("K'Sante");
   const [jgName, setJgTopName] = useState("Kindred");
   const [midName, setMidTopName] = useState("Ahri");
   const [botName, setBotTopName] = useState("Ezreal");
@@ -15,6 +15,7 @@ function TeamComp() {
   const midRef = useRef(null);
   const botRef = useRef(null);
   const suppRef = useRef(null);
+  const { location } = useContext(playerContext);
 
   useEffect(() => {
     let timeOutId: ReturnType<typeof setTimeout> = setTimeout(() => {});
@@ -72,35 +73,55 @@ function TeamComp() {
               <img
                 ref={topRef}
                 className="team-top"
-                src={`../public/icons/${topName}.png`}
+                src={
+                  location === "stage"
+                    ? `../public/icons/${topName}.png`
+                    : `/team-builder/icons/${topName}.png`
+                }
               />
             </li>
             <li>
               <img
                 ref={jgRef}
                 className="team-jg"
-                src={`../public/icons/${jgName}.png`}
+                src={
+                  location === "stage"
+                    ? `../public/icons/${jgName}.png`
+                    : `/team-builder/icons/${jgName}.png`
+                }
               />
             </li>
             <li>
               <img
                 ref={midRef}
                 className="team-mid"
-                src={`../public/icons/${midName}.png`}
+                src={
+                  location === "stage"
+                    ? `../public/icons/${midName}.png`
+                    : `/team-builder/icons/${midName}.png`
+                }
               />
             </li>
             <li>
               <img
                 ref={botRef}
                 className="team-bot"
-                src={`../public/icons/${botName}.png`}
+                src={
+                  location === "stage"
+                    ? `../public/icons/${botName}.png`
+                    : `/team-builder/icons/${botName}.png`
+                }
               />
             </li>
             <li>
               <img
                 ref={suppRef}
                 className="team-supp"
-                src={`../public/icons/${suppName}.png`}
+                src={
+                  location === "stage"
+                    ? `../public/icons/${suppName}.png`
+                    : `/team-builder/icons/${suppName}.png`
+                }
               />
             </li>
           </ul>
