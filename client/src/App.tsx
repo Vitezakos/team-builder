@@ -9,7 +9,7 @@ import { playerContext } from "./components/utilities/useContext";
 
 function App() {
   const [inputName, setInputName] = useState("NigHToWL#8512");
-  const [champion, setChampion] = useState({ lane: "mid", name: "ahri" });
+  const [champion, setChampion] = useState({ lane: "mid", name: "Ahri" });
   const [location, setLocation] = useState(
     window.location.hostname === "localhost" ? "stage" : "production"
   );
