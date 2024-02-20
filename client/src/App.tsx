@@ -3,7 +3,7 @@ import { Header } from "./components/Header";
 import { TeamBuilderContainer } from "./components/TeamBuilderContainer";
 import "semantic-ui-css/semantic.min.css";
 import { PlayerData } from "./components/PlayerData";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route, HashRouter } from "react-router-dom";
 import { useState } from "react";
 import { playerContext } from "./components/utilities/useContext";
 
@@ -21,7 +21,7 @@ function App() {
     <>
       <playerContext.Provider value={value}>
         <div className="app-container">
-          <BrowserRouter>
+          <HashRouter>
             <Routes>
               <Route
                 index
@@ -43,7 +43,7 @@ function App() {
                 }
               />
             </Routes>
-          </BrowserRouter>
+          </HashRouter>
         </div>
       </playerContext.Provider>
     </>
