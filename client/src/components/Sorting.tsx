@@ -3,7 +3,7 @@ import Jungle from "../../public/icons/Position_Plat-Jungle.png";
 import Mid from "../../public/icons/Position_Plat-Mid.png";
 import Bot from "../../public/icons/Position_Plat-Bot.png";
 import Support from "../../public/icons/Position_Plat-Support.png";
-import { FillIcon } from "../../public/icons/Fillsvg";
+import { FillIcon } from "../../public/icons/Fillsvg.tsx";
 import "./Sorting.css";
 import { topLane, jungle, midLane, adc, support } from "./utilities/consts";
 
