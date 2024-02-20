@@ -48,6 +48,8 @@ describe("Champions", () => {
           setInputName: jest.fn(),
           champion: { lane: "mid", name: "Ahri" },
           setChampion: jest.fn(),
+          location: "localhost",
+          setLocation: jest.fn(),
         }}
       >
         <Router location={history.location} navigator={history}>
@@ -80,6 +82,8 @@ describe("Champions", () => {
           setInputName: jest.fn(),
           champion: { lane: "mid", name: "Ahri" },
           setChampion: jest.fn(),
+          location: "localhost",
+          setLocation: jest.fn(),
         }}
       >
         <Router location={history.location} navigator={history}>
