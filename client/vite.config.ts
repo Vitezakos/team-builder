@@ -10,6 +10,7 @@ export default defineConfig({
     },
   },
   plugins: [react()],
+  base: "./",
   server: {
     proxy: {
       "/riot-api": {
