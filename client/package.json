@@ -10,7 +10,7 @@
     "preview": "vite preview",
     "test": "jest"
   },
-  "homepage": "https://vitezakos.github.io/team-builder",
+  "homepage": "https://vitezakos.github.io/team-builder/#/",
   "dependencies": {
     "jest-environment-jsdom": "^29.7.0",
     "react": "^18.2.0",
