@@ -21,7 +21,7 @@ function App() {
     <>
       <playerContext.Provider value={value}>
         <div className="app-container">
-          <HashRouter>
+          <HashRouter basename="/">
             <Routes>
               <Route
                 index
