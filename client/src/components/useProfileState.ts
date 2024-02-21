@@ -26,7 +26,6 @@ const useProfileState = () => {
     const [riotName, riotTagLine] = inputName.split("#");
     let riotAccountLink = `/riot-api/riot/account/v1/accounts/by-riot-id/${riotName}/${riotTagLine}?api_key=${apiKey}`;
     handleCurrentGames(riotAccountLink);
-    console.log(handleCurrentGames(riotAccountLink2));
   }, [inputName]);
 
   const handleCurrentGames = async (riotApiCall: string) => {
