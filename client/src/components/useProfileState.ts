@@ -24,8 +24,9 @@ const useProfileState = () => {
 
   useEffect(() => {
     const [riotName, riotTagLine] = inputName.split("#");
-    let riotAccountLink = `/riot-api/riot/account/v1/accounts/by-riot-id/${riotName}/${riotTagLine}?api_key=${apiKey}`;
-    handleCurrentGames(riotAccountLink);
+    //let riotAccountLink = `/riot-api/riot/account/v1/accounts/by-riot-id/${riotName}/${riotTagLine}?api_key=${apiKey}`;
+    let riotAccountLink2 = `https://europe.api.riotgames.com/riot/account/v1/accounts/by-riot-id/${riotName}/${riotTagLine}?api_key=${apiKey}`;
+    handleCurrentGames(riotAccountLink2);
   }, [inputName]);
 
   const handleCurrentGames = async (riotApiCall: string) => {
