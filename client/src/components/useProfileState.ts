@@ -12,7 +12,7 @@ interface Participant {
 }
 
 const useProfileState = () => {
-  const apiKey = "RGAPI-8e042dfe-6699-447f-bb8c-d1338a3fb65e";
+  const apiKey = "";
   const [currentGames, setCurrentGames] = useState<TempData[]>([]);
   const [currentNameAndTagLine, setCurrentNameAndTagLine] =
     useState<ProfileName>({ name: "", tagLine: "" });
@@ -24,8 +24,10 @@ const useProfileState = () => {
 
   useEffect(() => {
     const [riotName, riotTagLine] = inputName.split("#");
-    let riotAccountLink = `/riot-api/riot/account/v1/accounts/by-riot-id/${riotName}/${riotTagLine}?api_key=${apiKey}`;
-    handleCurrentGames(riotAccountLink);
+    //let riotAccountLink = `/riot-api/riot/account/v1/accounts/by-riot-id/${riotName}/${riotTagLine}?api_key=${apiKey}`;
+    let riotAccountLink2 = `https://europe.api.riotgames.com/riot/account/v1/accounts/by-riot-id/${riotName}/${riotTagLine}?api_key=${apiKey}`;
+    //handleCurrentGames(riotAccountLink);
+    console.log(handleCurrentGames(riotAccountLink2));
   }, [inputName]);
 
   const handleCurrentGames = async (riotApiCall: string) => {
