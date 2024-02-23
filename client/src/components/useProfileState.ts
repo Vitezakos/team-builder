@@ -123,11 +123,11 @@ const useProfileState = () => {
         tagLine: data.summonerData.tagLine + "",
       });
       let tempGameData = {} as TempData;
-      tempGameData.gameMode = data.gamesData.info.gameMode;
       for (let i = 0; i < data.gamesData.length; i++) {
         const x = data.gamesData.info.participants.filter(
           (participant: Participant) => participant.puuid == puuid
         );
+        tempGameData.gameMode = data.gamesData.info.gameMode;
         x.map((game: TempData) => {
           tempGameData.championName = game.championName.toLowerCase();
           tempGameData.kills = game.kills;
