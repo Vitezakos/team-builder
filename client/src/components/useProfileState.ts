@@ -12,7 +12,7 @@ interface Participant {
 }
 
 const useProfileState = () => {
-  const apiKey = "RGAPI-041b2831-67db-4d5e-a42f-c2d30772facb";
+  const apiKey = "";
   const [currentGames, setCurrentGames] = useState<TempData[]>([]);
   const [currentNameAndTagLine, setCurrentNameAndTagLine] =
     useState<ProfileName>({ name: "", tagLine: "" });
@@ -113,7 +113,6 @@ const useProfileState = () => {
         `https://maryslair.com/riot-api?username=${name}&tag=${tag}`
       );
       const data = await response.json();
-      const puuid = data.summonerData.puuid;
       setIconIdAndSummonerLevel({
         icon: data.summonerData.profileIconId,
         level: data.summonerData.summonerLevel,
@@ -124,10 +123,11 @@ const useProfileState = () => {
       });
       let tempGameData = {} as TempData;
       for (let i = 0; i < data.gamesData.length; i++) {
-        const x = data.gamesData.info.participants.filter(
-          (participant: Participant) => participant.puuid == puuid
+        const x = data.gamesData[i].info.participants.filter(
+          (participant: Participant) =>
+            participant.puuid == data.summonerData.puuid
         );
-        tempGameData.gameMode = data.gamesData.info.gameMode;
+        tempGameData.gameMode = data.gamesData[i].info.gameMode;
         x.map((game: TempData) => {
           tempGameData.championName = game.championName.toLowerCase();
           tempGameData.kills = game.kills;
