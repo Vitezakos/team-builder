@@ -118,16 +118,16 @@ const useProfileState = () => {
         icon: data.summonerData.profileIconId,
         level: data.summonerData.summonerLevel,
       });
+      setCurrentNameAndTagLine({
+        name: data.summonerData.gameName,
+        tagLine: data.summonerData.tagLine + "",
+      });
       let tempGameData = {} as TempData;
-      tempGameData.gameMode = data.info.gameMode;
+      tempGameData.gameMode = data.gamesData.info.gameMode;
       for (let i = 0; i < data.gamesData.length; i++) {
-        const x = data.info.participants.filter(
+        const x = data.gamesData.info.participants.filter(
           (participant: Participant) => participant.puuid == puuid
         );
-        setCurrentNameAndTagLine({
-          name: x[0].riotIdGameName,
-          tagLine: x[0].riotIdTagline + "",
-        });
         x.map((game: TempData) => {
           tempGameData.championName = game.championName.toLowerCase();
           tempGameData.kills = game.kills;
