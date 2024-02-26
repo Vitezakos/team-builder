@@ -128,7 +128,9 @@ const useProfileState = () => {
             participant.puuid == data.summonerData.puuid
         )[0];
         tempGameData.gameMode = data.gamesData[i].info.gameMode;
-        tempGameData.championName = x.championName.toLowerCase();
+        tempGameData.championName =
+          x.championName.charAt(0).toUpperCase() +
+          x.championName.slice(1).toLowerCase();
         tempGameData.kills = x.kills;
         tempGameData.deaths = x.deaths;
         tempGameData.assists = x.assists;
