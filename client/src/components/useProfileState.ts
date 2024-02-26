@@ -83,7 +83,6 @@ const useProfileState = () => {
         const data = await response.json();
         let tempData = {} as TempData;
         tempData.gameMode = data.info.gameMode;
-
         const x = data.info.participants.filter(
           (participant: Participant) => participant.puuid == puuid
         );
@@ -122,29 +121,29 @@ const useProfileState = () => {
         tagLine: data.summonerData.tagLine + "",
       });
       let tempGameData = {} as TempData;
+      let x = {} as TempData;
       for (let i = 0; i < data.gamesData.length; i++) {
-        const x = data.gamesData[i].info.participants.filter(
+        x = data.gamesData[i].info.participants.filter(
           (participant: Participant) =>
             participant.puuid == data.summonerData.puuid
-        );
+        )[0];
         tempGameData.gameMode = data.gamesData[i].info.gameMode;
-        x.map((game: TempData) => {
-          tempGameData.championName = game.championName.toLowerCase();
-          tempGameData.kills = game.kills;
-          tempGameData.deaths = game.deaths;
-          tempGameData.assists = game.assists;
-          if (game.win) {
-            tempGameData.win = "Victory";
-          } else {
-            tempGameData.win = "Defeat";
-          }
-          gamesInfo.push(tempGameData);
-        });
+        tempGameData.championName = x.championName.toLowerCase();
+        tempGameData.kills = x.kills;
+        tempGameData.deaths = x.deaths;
+        tempGameData.assists = x.assists;
+        if (x.win) {
+          tempGameData.win = "Victory";
+        } else {
+          tempGameData.win = "Defeat";
+        }
+        gamesInfo.push(tempGameData);
+        tempGameData = {} as TempData;
       }
-      return gamesInfo;
     } catch (error) {
       console.log("Error fetching data:", error);
     }
+    return gamesInfo;
   };
 
   return {
